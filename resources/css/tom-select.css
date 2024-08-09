@@ -1,0 +1,68 @@
+/*
+  Use the following to reproduce a Tailwind UI Select field with Tom Select
+*/
+
+@import "tom-select/dist/css/tom-select.min.css";
+
+.ts-control {
+    @apply flex w-full h-10 px-3 py-2 text-sm transition duration-200 border rounded-md border-input !bg-background !text-foreground placeholder:text-muted-foreground focus-within:outline-none focus-within:border-primary/70 focus-within:ring focus-within:ring-ring disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+.ts-control input {
+    @apply !pr-5 text-sm !m-0 w-full;
+}
+
+.ts-wrapper.plugin-remove_button .item {
+    @apply rounded-md;
+}
+
+.ts-wrapper.multi .ts-control > div {
+    @apply p-0 pl-1 m-0;
+}
+
+.ts-wrapper.multi.has-items .ts-control .item {
+    @apply py-0.5 px-2 rounded-sm text-xs mr-1 bg-primary text-primary-foreground;
+}
+
+.ts-wrapper.plugin-remove_button .item .remove {
+    @apply text-lg leading-none border-none rounded-r-lg;
+}
+
+.ts-dropdown {
+    @apply mt-2 border border-t rounded-md border-border bg-popover text-popover-foreground;
+}
+
+.ts-dropdown [data-selectable].option,
+.ts-dropdown .no-results {
+    @apply py-2;
+}
+
+.ts-dropdown [data-selectable].option:first-child {
+    @apply rounded-t-sm;
+}
+
+.ts-dropdown [data-selectable].option:last-child {
+    @apply rounded-b-sm;
+}
+
+.ts-dropdown .create:hover,
+.ts-dropdown .option:hover,
+.ts-dropdown .active {
+    @apply !bg-accent !text-accent-foreground transition;
+}
+
+.ts-dropdown .spinner {
+    @apply w-auto h-auto;
+}
+
+.ts-dropdown .spinner:after {
+    @apply inline-block w-5 h-5 p-0 my-0 border-2;
+}
+
+.ts-wrapper:not(.form-control):not(.form-select).single .ts-control {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    print-color-adjust: exact;
+}

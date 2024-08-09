@@ -1,0 +1,188 @@
+.choices {
+    @apply relative w-full z-[999] rounded-md flex items-center overflow-hidden transition duration-200 bg-background border focus-within:outline-none focus-within:border-primary/70 focus-within:ring focus-within:ring-ring disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+.choices.is-open {
+    @apply overflow-visible;
+}
+
+.choices.is-disabled .choices__inner,
+.choices.is-disabled .choices__input {
+    @apply cursor-not-allowed select-none;
+}
+
+.choices.is-disabled .choices__item {
+    @apply cursor-not-allowed;
+}
+
+.choices [hidden] {
+    display: none !important;
+}
+
+.choices[data-type*=select-one] {
+    @apply cursor-pointer outline-none h-10;
+}
+
+.choices[data-type*=select-one] .choices__inner {
+    @apply flex text-sm rounded-md bg-transparent border-0;
+}
+
+.choices[data-type*=select-one] .choices__input {
+    @apply w-full px-3 pb-2 border-b mb-2 m-0;
+}
+
+.choices[data-type*=select-one]::after {
+    @apply absolute right-3 top-1/2 -translate-y-1/2 size-0 border-0;
+}
+
+.choices[data-type*=select-one].is-open::after {
+    @apply border-0 mt-2;
+}
+
+.choices[data-type*=select-multiple],
+.choices[data-type*=text] {
+    @apply p-0 cursor-text min-h-10 flex items-center text-xs py-1 bg-transparent;
+}
+
+/*.choices[data-type*=select-multiple] .choices__inner,*/
+/*.choices[data-type*=text] .choices__inner {*/
+/*    @apply cursor-text min-h-10 px-3 py-2 inline-flex items-center text-sm bg-transparent;*/
+/*}*/
+
+.choices__inner {
+    @apply flex bg-popover w-full py-0 px-2 rounded-md border-none overflow-hidden;
+}
+
+.is-focused .choices__inner, .is-open .choices__inner {
+    @apply border border-border rounded-md;
+}
+
+.is-open .choices__inner {
+    @apply rounded-tr;
+}
+
+.is-flipped.is-open .choices__inner {
+    @apply rounded-bl;
+}
+
+.choices__list {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.choices__list--single {
+    @apply inline-block w-full p-1 pr-4;
+}
+
+[dir=rtl] .choices__list--single {
+    @apply pr-1 pl-4;
+}
+
+.choices__list--single .choices__item {
+    @apply w-full;
+}
+
+.choices__list--multiple {
+    @apply inline-block;
+}
+
+.choices__list--multiple .choices__item {
+    @apply inline-block align-middle rounded-sm px-2 border text-xs mr-1 bg-accent text-accent-foreground break-all;
+}
+
+.choices__list--multiple .choices__item[data-deletable] {
+    @apply pr-1.5;
+}
+
+.choices__list--multiple .choices__item.is-highlighted {
+    @apply bg-primary text-primary-foreground;
+}
+
+.is-disabled .choices__list--multiple .choices__item {
+    @apply bg-muted border border-border;
+}
+
+.choices__list--dropdown, .choices__list[aria-expanded] {
+    @apply absolute w-full overflow-hidden top-full -mt-0.5 break-all bg-popover border border-border border-b-2 hidden z-10;
+    will-change: visibility;
+}
+
+.is-active.choices__list--dropdown, .is-active.choices__list[aria-expanded] {
+    @apply block rounded-sm mt-2 py-2;
+}
+
+.is-open .choices__list--dropdown, .is-open .choices__list[aria-expanded] {
+    @apply border-border border;
+}
+
+.is-flipped .choices__list--dropdown, .is-flipped .choices__list[aria-expanded] {
+    @apply top-auto bottom-full mt-0 mb-0.5 rounded-t-sm;
+}
+
+.choices__list--dropdown .choices__list, .choices__list[aria-expanded] .choices__list {
+    @apply relative max-h-60 overflow-auto will-change-scroll;
+}
+
+.choices__list--dropdown .choices__item, .choices__list[aria-expanded] .choices__item {
+    @apply relative px-2 py-1 text-sm transition rounded mx-2;
+}
+
+@media (min-width: 640px) {
+    .choices__list--dropdown .choices__item--selectable, .choices__list[aria-expanded] .choices__item--selectable {
+        @apply pr-2;
+    }
+
+    .choices__list--dropdown .choices__item--selectable::after, .choices__list[aria-expanded] .choices__item--selectable::after {
+        @apply absolute opacity-0 right-2.5 top-1/2 -translate-y-1/2;
+    }
+}
+
+.choices__list--dropdown .choices__item--selectable.is-highlighted, .choices__list[aria-expanded] .choices__item--selectable.is-highlighted {
+    @apply bg-accent;
+}
+
+.choices__list--dropdown .choices__item--selectable.is-highlighted::after, .choices__list[aria-expanded] .choices__item--selectable.is-highlighted::after {
+    @apply opacity-50;
+}
+
+.choices__item {
+    cursor: default;
+}
+
+.choices__item--selectable {
+    cursor: pointer;
+}
+
+.choices__item--disabled {
+    cursor: not-allowed;
+    -webkit-user-select: none;
+    user-select: none;
+    opacity: 0.5;
+}
+
+.choices__heading {
+    @apply border-b border-border text-muted-foreground p-2.5;
+}
+
+.choices__input {
+    @apply inline-block align-middle bg-transparent border-0 rounded-none max-w-full pr-0;
+}
+
+.choices__input:focus {
+    @apply outline-none;
+}
+
+.choices__input::-webkit-search-decoration, .choices__input::-webkit-search-cancel-button, .choices__input::-webkit-search-results-button, .choices__input::-webkit-search-results-decoration {
+    display: none;
+}
+
+.choices__input::-ms-clear, .choices__input::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+.choices__placeholder {
+    opacity: 0.5;
+}
