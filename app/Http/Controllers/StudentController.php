@@ -28,7 +28,7 @@ class StudentController extends Controller
             'student' => new Student(),
             'action' => route('students.store'),
             'method' => 'POST',
-            'title' => 'Tambah Siswa Baru',
+            'title' => 'Tambah Siswa',
         ]);
     }
 

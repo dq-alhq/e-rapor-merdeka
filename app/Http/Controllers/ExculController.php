@@ -28,7 +28,7 @@ class ExculController extends Controller
             'excul' => new Excul(),
             'action' => route('exculs.store'),
             'method' => 'POST',
-            'title' => 'Tambah Ekstrakurikuler Baru',
+            'title' => 'Tambah Ekskul',
         ]);
     }
 
@@ -66,7 +66,7 @@ class ExculController extends Controller
             'excul' => $excul,
             'action' => route('exculs.update', $excul),
             'method' => 'PUT',
-            'title' => 'Ubah Data Ekstrakurikuler',
+            'title' => 'Ubah Data Ekskul',
         ]);
     }
 

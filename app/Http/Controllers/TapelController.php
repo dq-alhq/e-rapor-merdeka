@@ -28,7 +28,7 @@ class TapelController extends Controller
             'tapel' => new Tapel(),
             'action' => route('tapels.store'),
             'method' => 'POST',
-            'title' => 'Tambah Tahun Pelajaran Baru',
+            'title' => 'Tambah Tapel',
         ]);
     }
 
@@ -58,7 +58,7 @@ class TapelController extends Controller
             'tapel' => $tapel,
             'action' => route('tapels.update', $tapel),
             'method' => 'PUT',
-            'title' => 'Edit Tahun Pelajaran',
+            'title' => 'Edit Tapel',
         ]);
     }
 

@@ -28,7 +28,7 @@ class TeacherController extends Controller
             'teacher' => new Teacher(),
             'action' => route('teachers.store'),
             'method' => 'POST',
-            'title' => 'Tambah Guru Baru',
+            'title' => 'Tambah Guru',
         ]);
     }
 

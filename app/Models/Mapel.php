@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Mapel extends Model
 {
@@ -14,15 +15,15 @@ class Mapel extends Model
     protected $fillable = ['nama', 'code'];
 
     /**
-     * Get all of the mappings for the Mapel
+     * Get all the mappings for the Mapel
      */
-    public function mappings(): HasMany
+    public function mapping(): HasOne
     {
-        return $this->hasMany(Mapping::class, 'mapel_id', 'id');
+        return $this->hasOne(Mapping::class, 'mapel_id', 'id');
     }
 
     /**
-     * Get all of the lessons for the Mapel
+     * Get all the lessons for the Mapel
      */
     public function lessons(): HasMany
     {

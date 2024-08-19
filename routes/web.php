@@ -22,6 +22,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('classrooms', Controllers\ClassroomController::class);
     Route::resource('mapels', Controllers\MapelController::class);
 
+    Route::resource('mappings', Controllers\MappingController::class);
+
     Route::get('lessons', [Controllers\LessonController::class, 'index'])->name('lessons.index');
     Route::get('lessons/classroom/{classroom}', [Controllers\LessonController::class, 'show'])->name('lessons.show');
     Route::post('lessons/{classroom}/{mapel}', [Controllers\LessonController::class, 'attach_mapel'])->name('attach_mapel');

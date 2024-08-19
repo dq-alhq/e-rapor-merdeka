@@ -1,5 +1,5 @@
 <x-dashboard-layout>
-    <x-slot name="title">Anggota Kelas {{ $classroom->nama() }}</x-slot>
+    <x-slot name="title">Anggota Kelas</x-slot>
     <div
         class="relative mb-2 inline-flex items-center justify-center w-full h-10 gap-1 p-1 bg-white border rounded-lg select-none">
         @foreach($classrooms as $class)

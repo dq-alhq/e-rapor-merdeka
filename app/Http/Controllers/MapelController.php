@@ -27,7 +27,7 @@ class MapelController extends Controller
             'mapel' => new Mapel(),
             'action' => route('mapels.store'),
             'method' => 'POST',
-            'title' => 'Tambah Mata Pelajaran Baru',
+            'title' => 'Tambah Mapel',
         ]);
     }
 
@@ -56,7 +56,7 @@ class MapelController extends Controller
             'mapel' => $mapel,
             'action' => route('mapels.update', $mapel),
             'method' => 'PUT',
-            'title' => 'Ubah Data Mata Pelajaran',
+            'title' => 'Ubah Data Mapel',
         ]);
     }
 

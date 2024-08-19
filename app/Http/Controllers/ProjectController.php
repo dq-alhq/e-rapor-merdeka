@@ -28,7 +28,7 @@ class ProjectController extends Controller
             'project' => new Project(),
             'action' => route('projects.store'),
             'method' => 'POST',
-            'title' => 'Tambah Proyek Baru',
+            'title' => 'Tambah Proyek',
         ]);
     }
 

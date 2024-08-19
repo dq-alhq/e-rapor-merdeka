@@ -44,21 +44,26 @@
             <x-lucide-book-marked/>
             Mata Pelajaran
         </x-nav-link>
-        <x-nav-link :href="route('lessons.index')" :active="request()->routeIs('lessons.*')">
-            <x-lucide-book-open-check/>
-            Pembelajaran
+        <x-nav-link :href="route('mappings.index')" :active="request()->routeIs('mapping.*')">
+            <x-lucide-book-key/>
+            Mapping Mapel
         </x-nav-link>
         <x-nav-link :href="route('exculs.index')" :active="request()->routeIs('exculs.*')">
             <x-lucide-swatch-book/>
             Ekstrakurikuler
         </x-nav-link>
-        <x-nav-link :href="route('exculmembers.index')" :active="request()->routeIs('exculmembers.*')">
-            <x-lucide-clipboard-pen/>
-            Pembelajaran Ekstrakurikuler
-        </x-nav-link>
         <x-nav-link :href="route('projects.index')" :active="request()->routeIs('projects.*')">
             <x-lucide-server-cog/>
             Proyek P5
+        </x-nav-link>
+        <x-divider>Pembelajaran</x-divider>
+        <x-nav-link :href="route('lessons.index')" :active="request()->routeIs('lessons.*')">
+            <x-lucide-book-open-check/>
+            Pembelajaran
+        </x-nav-link>
+        <x-nav-link :href="route('exculmembers.index')" :active="request()->routeIs('exculmembers.*')">
+            <x-lucide-clipboard-pen/>
+            Pembelajaran Ekstrakurikuler
         </x-nav-link>
     </nav>
 </div>
@@ -75,7 +80,7 @@
     </x-card>
 
     <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
-        <x-lucide-settings/>
+        <x-lucide-settings-2/>
         {{ __('Profile') }}
     </x-nav-link>
 

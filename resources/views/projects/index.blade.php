@@ -9,7 +9,7 @@
             </x-slot:actions>
         </x-slot:header>
         <x-slot:content>
-            <div class="grid gap-6 p-6">
+            <div class="grid gap-6 px-6 pb-6">
                 @foreach($projects as $project)
                     <x-card class="overflow-auto">
                         <x-slot:header>
@@ -19,10 +19,6 @@
                                         {{ $project->kegiatan }}
                                     </x-slot:trigger>
                                     <x-slot:content>
-                                        <x-dropdown.link :href="route('projects.show', $project)">
-                                            <x-lucide-eye/>
-                                            Lihat
-                                        </x-dropdown.link>
                                         <x-dropdown.link :href="route('projects.edit', $project)">
                                             <x-lucide-edit/>
                                             Edit

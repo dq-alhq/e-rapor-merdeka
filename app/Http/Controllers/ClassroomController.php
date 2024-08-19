@@ -42,7 +42,7 @@ class ClassroomController extends Controller
             'pilihan_tingkat' => $this->getPilihan_tingkat(),
             'action' => route('classrooms.store'),
             'method' => 'POST',
-            'title' => 'Tambah Kelas Baru',
+            'title' => 'Tambah Kelas',
         ]);
     }
 
