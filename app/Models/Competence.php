@@ -6,6 +6,8 @@ use App\Enums\Grade;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Competence extends Model
 {
@@ -15,8 +17,8 @@ class Competence extends Model
         'mapel_id',
         'tingkat',
         'semester',
-        'kode',
-        'capaian',
+        'code',
+        'materi',
     ];
 
     protected function casts(): array
@@ -32,5 +34,10 @@ class Competence extends Model
     public function mapel(): BelongsTo
     {
         return $this->belongsTo(Mapel::class, 'mapel_id', 'id');
+    }
+
+    public function objectives(): HasMany
+    {
+        return $this->hasMany(Objective::class, 'competence_id');
     }
 }

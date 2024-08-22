@@ -5,7 +5,7 @@
     </a>
 </div>
 
-<div class="flex h-[calc(100vh-15rem)] overflow-auto py-2 scroll-smooth scroll">
+<div class="flex h-[calc(100vh-12rem)] overflow-auto py-2 scroll-smooth scroll">
     <nav class="flex flex-col items-start w-full gap-1 px-2 text-sm lg:px-4">
         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
             <x-lucide-gauge/>
@@ -65,6 +65,10 @@
             <x-lucide-clipboard-pen/>
             Pembelajaran Ekstrakurikuler
         </x-nav-link>
+        <x-nav-link :href="route('competences.index')" :active="request()->routeIs('competences.*')">
+            <x-lucide-crosshair/>
+            Lingkup Materi
+        </x-nav-link>
     </nav>
 </div>
 
@@ -78,11 +82,6 @@
             <div class="text-xs">{{ Auth::user()->role() }}</div>
         </div>
     </x-card>
-
-    <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
-        <x-lucide-settings-2/>
-        {{ __('Profile') }}
-    </x-nav-link>
 
     <!-- Authentication -->
     <form method="POST" action="{{ route('logout') }}">

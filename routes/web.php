@@ -46,6 +46,9 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('projects', Controllers\ProjectController::class);
 
+    Route::resource('competences', Controllers\CompetenceController::class);
+    Route::resource('objectives', Controllers\ObjectiveController::class);
+
     Route::middleware('admin')->group(function () {
         Route::resource('school', Controllers\SchoolController::class)->only(['index', 'edit', 'update']);
         Route::get('users', [Controllers\UserController::class, 'index'])->name('users.index');

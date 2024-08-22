@@ -16,7 +16,13 @@ return new class extends Migration
             $table->foreignId('mapel_id')->nullable()->constrained()->nullOnDelete();
             $table->integer('tingkat');
             $table->enum('semester', ['1', '2']);
-            $table->string('kode');
+            $table->string('code');
+            $table->string('materi');
+            $table->timestamps();
+        });
+        Schema::create('objectives', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('competence_id')->nullable()->constrained()->nullOnDelete();
             $table->string('capaian');
             $table->timestamps();
         });
