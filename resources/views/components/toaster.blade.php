@@ -21,10 +21,10 @@
         if (typeof options.type != 'undefined') type = options.type;
         if (typeof options.position != 'undefined') position = options.position;
         if (typeof options.html != 'undefined') html = options.html;
-    
+
         window.dispatchEvent(new CustomEvent('toast-show', { detail: { type: type, message: message, description: description, position: position, html: html } }));
     }
-    
+
     window.customToastHTML = `
                             <div class='relative flex items-start justify-center p-4'>
                                 <img src='https://cdn.devdojo.com/images/august2023/headshot-new.jpeg' class='w-10 h-10 mr-2 rounded-full'>
@@ -205,27 +205,27 @@
                         topToast.style.top = '0px';
                     }
                 }
-        
+
                 let bottomPositionOfFirstToast = this.getBottomPositionOfElement(topToast);
-        
+
                 if (this.toasts.length == 1) return;
                 let middleToast = document.getElementById(this.toasts[1].id);
                 middleToast.style.zIndex = 90;
-        
+
                 if (this.expanded) {
                     middleToastPosition = topToast.getBoundingClientRect().height +
                         this.paddingBetweenToasts + 'px';
-        
+
                     if (this.position.includes('bottom')) {
                         middleToast.style.top = 'auto';
                         middleToast.style.bottom = middleToastPosition;
                     } else {
                         middleToast.style.top = middleToastPosition;
                     }
-        
+
                     middleToast.style.scale = '100%';
                     middleToast.style.transform = 'translateY(0px)';
-        
+
                 } else {
                     middleToast.style.scale = '94%';
                     if (this.position.includes('bottom')) {
@@ -235,8 +235,8 @@
                         middleToast.style.transform = 'translateY(16px)';
                     }
                 }
-        
-        
+
+
                 if (this.toasts.length == 2) return;
                 let bottomToast = document.getElementById(this.toasts[2].id);
                 bottomToast.style.zIndex = 80;
@@ -245,14 +245,14 @@
                         this.paddingBetweenToasts +
                         middleToast.getBoundingClientRect().height +
                         this.paddingBetweenToasts + 'px';
-        
+
                     if (this.position.includes('bottom')) {
                         bottomToast.style.top = 'auto';
                         bottomToast.style.bottom = bottomToastPosition;
                     } else {
                         bottomToast.style.top = bottomToastPosition;
                     }
-        
+
                     bottomToast.style.scale = '100%';
                     bottomToast.style.transform = 'translateY(0px)';
                 } else {
@@ -264,9 +264,9 @@
                         bottomToast.style.transform = 'translateY(32px)';
                     }
                 }
-        
-        
-        
+
+
+
                 if (this.toasts.length == 3) return;
                 let burnToast = document.getElementById(this.toasts[3].id);
                 burnToast.style.zIndex = 70;
@@ -277,14 +277,14 @@
                         this.paddingBetweenToasts +
                         bottomToast.getBoundingClientRect().height +
                         this.paddingBetweenToasts + 'px';
-        
+
                     if (this.position.includes('bottom')) {
                         burnToast.style.top = 'auto';
                         burnToast.style.bottom = burnToastPosition;
                     } else {
                         burnToast.style.top = burnToastPosition;
                     }
-        
+
                     burnToast.style.scale = '100%';
                     burnToast.style.transform = 'translateY(0px)';
                 } else {
@@ -292,40 +292,40 @@
                     this.alignBottom(topToast, burnToast);
                     burnToast.style.transform = 'translateY(48px)';
                 }
-        
+
                 burnToast.firstElementChild.classList.remove('opacity-100');
                 burnToast.firstElementChild.classList.add('opacity-0');
-        
+
                 let that = this;
                 // Burn 🔥 (remove) last toast
                 setTimeout(function() {
                     that.toasts.pop();
                 }, 300);
-        
+
                 if (this.position.includes('bottom')) {
                     middleToast.style.top = 'auto';
                 }
-        
+
                 return;
             },
             alignBottom(element1, element2) {
                 // Get the top position and height of the first element
                 let top1 = element1.offsetTop;
                 let height1 = element1.offsetHeight;
-        
+
                 // Get the height of the second element
                 let height2 = element2.offsetHeight;
-        
+
                 // Calculate the top position for the second element
                 let top2 = top1 + (height1 - height2);
-        
+
                 // Apply the calculated top position to the second element
                 element2.style.top = top2 + 'px';
             },
             alignTop(element1, element2) {
                 // Get the top position of the first element
                 let top1 = element1.offsetTop;
-        
+
                 // Apply the same top position to the second element
                 element2.style.top = top1 + 'px';
             },
@@ -353,13 +353,13 @@
                     $el.style.height = '0px';
                     return;
                 }
-        
+
                 lastToast = this.toasts[this.toasts.length - 1];
                 lastToastRectangle = document.getElementById(lastToast.id).getBoundingClientRect();
-        
+
                 firstToast = this.toasts[0];
                 firstToastRectangle = document.getElementById(firstToast.id).getBoundingClientRect();
-        
+
                 if (this.toastsHovered) {
                     if (this.position.includes('bottom')) {
                         $el.style.height = ((firstToastRectangle.top + firstToastRectangle.height) - lastToastRectangle.top) + 'px';
@@ -399,14 +399,14 @@
             }
             stackToasts();
             $watch('toastsHovered', function(value) {
-            
+
                 if (layout == 'default') {
                     if (position.includes('bottom')) {
                         resetBottom();
                     } else {
                         resetTop();
                     }
-            
+
                     if (value) {
                         // calculate the new positions
                         expanded = true;
@@ -447,13 +447,13 @@
                             $el.firstElementChild.classList.remove('opacity-0', '-translate-y-full');
                         }
                         $el.firstElementChild.classList.add('opacity-100', 'translate-y-0');
-                
+
                         setTimeout(function() {
                             stackToasts();
                         }, 10);
                     }, 5);
                 }, 50);
-                
+
                 setTimeout(function() {
                     setTimeout(function() {
                         $el.firstElementChild.classList.remove('opacity-100');
@@ -471,7 +471,7 @@
                     class="absolute w-full duration-300 ease-out select-none sm:max-w-xs"
                     :class="{ 'toast-no-description': !toast.description }">
                     <span
-                        class="relative flex flex-col items-start shadow-[0_5px_15px_-3px_rgb(0_0_0_/_0.08)] w-full transition-all duration-300 ease-out bg-white border sm:rounded-md sm:max-w-xs group"
+                        class="relative flex flex-col items-start shadow-[0_5px_15px_-3px_rgb(0_0_0_/_0.08)] w-full transition-all duration-300 ease-out bg-background border sm:rounded-md sm:max-w-xs group"
                         :class="{ 'p-4': !toast.html, 'p-0': toast.html }">
                         <template x-if="!toast.html">
                             <div class="relative">

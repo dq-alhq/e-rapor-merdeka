@@ -31,7 +31,7 @@
                     </x-table.row>
                 </x-table.header>
                 <x-table.body>
-                    @forelse ($classmembers as $classmember)
+                    @forelse ($excul->classmembers as $classmember)
                         <x-table.row>
                             <x-table.cell>{{ $loop->iteration }}</x-table.cell>
                             <x-table.cell>{{ $classmember->student->nama }}</x-table.cell>

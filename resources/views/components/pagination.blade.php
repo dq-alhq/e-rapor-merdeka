@@ -15,7 +15,7 @@
 
             @if ($paginator->hasMorePages())
                 <a href="{{ $paginator->nextPageUrl() }}"
-                   class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-muted-foreground bg-white border leading-5 rounded-md hover:text-foreground focus:outline-none focus:ring focus:border-blue-300 active:bg-accent active:text-foreground transition ease-in-out duration-150">
+                   class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-muted-foreground bg-background border leading-5 rounded-md hover:text-foreground focus:outline-none focus:ring focus:border-blue-300 active:bg-accent active:text-foreground transition ease-in-out duration-150">
                     {!! __('pagination.next') !!}
                 </a>
             @else

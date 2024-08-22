@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('dimensions', function (Blueprint $table) {
             $table->id();
-            $table->integer('jenjang');
+            $table->string('jenjang');
             $table->string('deskripsi');
             $table->timestamps();
         });

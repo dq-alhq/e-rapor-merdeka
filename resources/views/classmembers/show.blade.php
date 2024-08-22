@@ -1,7 +1,7 @@
 <x-dashboard-layout>
     <x-slot name="title">Anggota Kelas</x-slot>
     <div
-        class="relative mb-2 inline-flex items-center justify-center w-full h-10 gap-1 p-1 bg-white border rounded-lg select-none">
+        class="relative mb-2 inline-flex items-center justify-center w-full h-10 gap-1 p-1 bg-background border rounded-lg select-none">
         @foreach($classrooms as $class)
             <a href="{{ route('classmembers.show', $class) }}"
                class="relative {{ $class->id === $classroom->id ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground' }} z-20 inline-flex items-center justify-center w-full h-8 px-3 text-sm font-medium transition-all rounded-md cursor-pointer whitespace-nowrap">
@@ -9,7 +9,7 @@
             </a>
         @endforeach
     </div>
-    <div class="flex flex-col gap-4 lg:flex-row">
+    <div class="flex flex-col-reverse gap-4 lg:flex-row">
         <x-card class="w-full">
             <x-slot name="header">
                 <x-slot name="title">Aktif</x-slot>
@@ -51,6 +51,7 @@
                 </x-table.body>
             </x-table>
         </x-card>
+        @if($students->isNotEmpty())
         <x-card class="w-full">
             <x-slot name="header">
                 <x-slot name="title">Nonaktif</x-slot>
@@ -88,5 +89,6 @@
                 </x-table.body>
             </x-table>
         </x-card>
+        @endif
     </div>
 </x-dashboard-layout>

@@ -31,7 +31,16 @@ class MappingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $order = 1;
+        while (Mapping::query()->where('kelompok', $request->kelompok)->where('order', $order)->exists()) {
+            $order++;
+        }
+        Mapping::query()->create([
+            'mapel_id' => $request->mapel_id,
+            'kelompok' => $request->kelompok,
+            'order' => $order,
+        ]);
+        return back()->with('success', 'Mapel ditambahkan');
     }
 
     /**
@@ -55,14 +64,23 @@ class MappingController extends Controller
      */
     public function update(Request $request, Mapping $mapping)
     {
-        //
+        $order = $request->order;
+        if($order === 'increase') {
+            Mapping::query()->where('kelompok', $mapping->kelompok)->where('order', $mapping->order + 1)->update(['order' => $mapping->order]);
+            $mapping->update(['order' => $mapping->order + 1]);
+        } else {
+            Mapping::query()->where('kelompok', $mapping->kelompok)->where('order', $mapping->order - 1)->update(['order' => $mapping->order]);
+            $mapping->update(['order' => $mapping->order - 1]);
+        }
+        return back()->with('success', 'Mapel diupdate');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Mapel $mapel)
+    public function destroy(Mapping $mapping)
     {
-        dd($mapel);
+        $mapping->delete();
+        return back()->with('success', 'Mapel dihapus');
     }
 }

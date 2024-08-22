@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Classmember;
 use App\Models\Classroom;
+use App\Models\Project;
+use App\Models\Projectmember;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -58,6 +60,7 @@ class ClassmemberController extends Controller
         if ($student->exculs->count() > 0) {
             return back()->with('error', 'Anggota sedang aktif diekskul');
         }
+        Projectmember::query()->where('classmember_id', $student->classmembers()->first()->id)->delete();
         $classroom->students()->detach($student);
         return back()->with('success', 'Anggota dihapus');
     }

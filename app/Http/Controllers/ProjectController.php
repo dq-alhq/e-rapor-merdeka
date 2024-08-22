@@ -13,9 +13,7 @@ class ProjectController extends Controller
      */
     public function index(Request $request)
     {
-        $search = $request->search;
-        $perPage = $request->per_page ?? 10;
-        $projects = Project::query()->where('name', 'like', "%{$search}%")->paginate($perPage)->withQueryString();
+        $projects = Project::query()->paginate(5)->withQueryString();
         return view('projects.index', compact('projects'));
     }
 
